@@ -31,7 +31,13 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public int size() {
     // TODO add the sizes of all the chains
+    // Done
+
     int result = 0;
+
+    for (int n=0; n <DEFAULT_TABLE_SIZE;n++) {
+      result += table.get(n).size();
+    }
 
 
     return result;
@@ -39,41 +45,68 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public boolean isEmpty() {
+
     return size() == 0;
   }
 
   @Override
   public boolean containsKey(final Object key) {
     // TODO follow basic approach of remove below (though this will be much simpler)
+    // Done
+
     final int index = calculateIndex(key);
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext() ){
+      final Entry<K,V> entry = iter.next();
+      if (entry.getKey().equals(key)){
+        return true;
+      }
 
-
+    }
     return false;
   }
 
   @Override
   public boolean containsValue(final Object value) {
     // TODO follow basic approach of remove below (though this will be much simpler)
+    // Done
 
-
+    final int index = calculateIndex(value);
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()){
+      final Entry<K, V> entry = iter.next();
+      if (entry.getValue().equals(value)){
+        return true;
+      }
+    }
     return false;
   }
 
   @Override
   public V get(final Object key) {
     // TODO follow basic approach of remove below (though this will be simpler)
+    // Done
+
     final int index = calculateIndex(key);
-
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(key)) {
+        final V value = entry.getValue();
+        return  value;
+      }
+    }
     return null;
   }
 
   @Override
   public V put(final K key, final V value) {
     // TODO follow basic approach of remove below (this will be similar)
+    //
+
     final int index = calculateIndex(key);
-
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    
     return null;
   }
 
