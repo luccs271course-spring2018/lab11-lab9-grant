@@ -17,6 +17,8 @@ public class TestMyHashMap {
   @Before
   public void setUp() {
     // TODO create the SUT instance
+    //done
+
     fixture = new MyHashMap<>();
   }
 
